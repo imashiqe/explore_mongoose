@@ -27,91 +27,10 @@ app.get('/', (req: Request, res: Response , next: NextFunction) => {
     // next();
 
 
-    //creating an  interface
-    interface IUser{
-      id: string;
-      role:"student";
-      password: string;
-      name: {
-         firstName: string,
-         middleName: string,
-         lastName: string,
-
-      };
-      dateOfBirth?: string;
-      gender: "male" | "female";
-      email?: String;
-      contactNo: string;
-      emergencyContact: string;
-      presentAddress: string;
-      permanentAddress: string;
-
-    }
+    
 
       //creating  schema using  interface
-  const userSchema = new Schema<IUser>({
-    id: { type: String,
-    required: true ,
-    unique: true,
-      },
-   role: {
-       type: String,
-       required: true,
-    },
-    password:{
-       type: String,
-       required: true,
 
-    },
-    name: {
-       firstName:{
-        type:String,
-        required: true,
-       },
-       middleName:{
-         type: String
-       },
-       lastName: {
-         type: String,
-         required: true,
-       }
-    },
-    dateOfBirth: {
-      type: String
-     
-    },
-    gender: {
-      type: String,
-      enum : ['male', 'female']
-    },
-    email: {
-       type: String,
-       required: true,
-    },
-    contactNo: {
-      type:String,
-      required: true,
-    },
-    // emergencyContact: {
-    //    type: Number,
-    //    required: true,
-    // },
-    presentAddress: {
-       type: String,
-       required: true,
-    },
-    permanentAddress: {
-       type: String,
-       required: true,
-    }
-   // name: { type: String, required: true },
-   // email: { type: String, required: true },
-    // avatar: String
-  });
-
-
-// model
-const User = model<IUser>("User" , userSchema);
 
 const createUserToDB=async()=> {
          const user = new User({
@@ -154,3 +73,13 @@ const createUserToDB=async()=> {
 
 
   export default app;
+
+  // Pattern MVC Model
+
+  /*
+   Interface
+   Schema , Model -> 
+   route 
+   route funtion -> controller.ts
+   databse query-> services
+  */
