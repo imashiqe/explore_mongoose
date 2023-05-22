@@ -1,9 +1,13 @@
-import express, { Application ,NextFunction,Request,Response } from 'express';
+import express, { Application } from 'express';
 //const app = express();
-import cors from 'cors';
-import { Schema, model ,} from 'mongoose';
 
+import cors from 'cors';
 const app: Application = express();
+
+// Application  routes
+import userRoutes from './app/modules/user/user.route'
+
+
 //using cors
 app.use(cors());
 
@@ -11,10 +15,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/v1/user", userRoutes );
+
+export default app;
 
 
-app.get('/', (req: Request, res: Response , next: NextFunction) => {
-     //inserting  a test  data  into mongodb
+
+
+
+
+
+       //inserting  a test  data  into mongodb
 
      /*
      step1: Interface done
@@ -32,36 +43,7 @@ app.get('/', (req: Request, res: Response , next: NextFunction) => {
       //creating  schema using  interface
 
 
-const createUserToDB=async()=> {
-         const user = new User({
-        id: '778',
-      role:"student",
-      password: 'jiofahim',
-      name: {
-         firstName: 'Ashiqur X',
-         middleName: 'Rahman',
-         lastName: 'Fahim',
-
-      },
-    
-      gender: "male" ,
-      email: 'imashiqe@gmail.com',
-      contactNo: '014578412',
-      emergencyContact: '01457487451',
-      presentAddress: 'lalbag dhaka',
-      permanentAddress: 'ramgonj dhaka',
-
-  });
-   await user.save();
-   console.log(user);
-};
-   createUserToDB();
-
  
-  });
-
-
-  
   // 3. Create a Model.
   // const User = model<IUser>('IUser', userSchema);
   
@@ -72,7 +54,7 @@ const createUserToDB=async()=> {
 
 
 
-  export default app;
+
 
   // Pattern MVC Model
 
