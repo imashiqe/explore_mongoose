@@ -18,3 +18,7 @@
     permanentAddress: string;
 
   }
+
+   export interface IUserMethods {
+   fullName(): string;
+ }
