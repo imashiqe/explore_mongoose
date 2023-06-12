@@ -33,3 +33,9 @@ export  const getAdminUserByIdFromDB= async(payload:string
    const user = new User()
    return user;
 };
+
+
+//class -> Attach -> Method -> Directly Call  using class
+// user = new User
+//user . instance methods
+// User

@@ -1,4 +1,6 @@
-//creating an  interface
+
+
+import { Model } from "mongoose";//creating an  interface
  export interface IUser{
     id: string;
     role:"student";
@@ -18,7 +20,13 @@
     permanentAddress: string;
 
   }
+    
+   // Statics 
+   interface UserModel extends Model<IUser> {
+      myStaticMethod(): number;
+    }
 
+   // instance methods
    export interface IUserMethods {
    fullName(): string;
  }
