@@ -67,7 +67,7 @@ const userSchema = new Schema<IUser, UserModel,IUserMethods>({
     return this.name.firstName + ' ' + this.name.lastName;
   });
 // model
-const User = model<IUser>("User" , userSchema);
+const User = model<IUser,UserModel>("User" , userSchema);
 
 export default User;
 

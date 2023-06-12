@@ -7,6 +7,8 @@ import User from "./user.model";
 
 
 await user.save(); // built in  instance methods custom instance methods 
+// user.fullName()  // custom instance methods
+console.log(user.fullName());
 return user;
 };
 
@@ -15,6 +17,7 @@ return user;
 export const getUserFormDB= async()
 : Promise<IUser[]> => {
     const users = await User.find();
+    
     return users;
 };
 
@@ -25,6 +28,8 @@ export  const getUserByIdFromDB= async(payload:string
    return user;
 };
 
-const getUserById= async()=>{
-
-}
+export  const getAdminUserByIdFromDB= async(payload:string 
+   ) : Promise<IUser | null> =>{
+   const user = new User()
+   return user;
+};
